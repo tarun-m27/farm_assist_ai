@@ -1,2 +1,0 @@
-# SENTINEL_HACK5.0
-KSIT Hakaton
