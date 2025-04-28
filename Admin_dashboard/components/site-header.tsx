@@ -23,7 +23,12 @@ export function SiteHeader() {
           orientation="vertical"
           className="mx-2 data-[orientation=vertical]:h-4"
         />
-        <h1 className="text-base font-medium">Admin</h1>
+        <span className=" text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-green-500 to-teal-500 dark:from-blue-400 dark:via-green-400 dark:to-teal-400">
+          FarmAssist
+        </span>
+        <span className="ml-1 text-sm bg-green-600 text-white dark:bg-green-400 dark:text-gray-900 px-1 rounded">
+          AI
+        </span>
         <div className="ml-auto flex items-center gap-2">
           <Button
             variant="ghost"
