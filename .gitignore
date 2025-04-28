@@ -1,8 +1,8 @@
 node_modules/
 .env
 backend/conf.env/
-backend/controllers/
-backend/node_modules/
-backend/models/
-backend/router/
-backend/utils/
+# backend/controllers/
+# backend/node_modules/
+# backend/models/
+# backend/router/
+# backend/utils/

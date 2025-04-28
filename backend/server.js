@@ -33,14 +33,19 @@ const upload = multer({ storage: multer.memoryStorage() });
 
 const PlantDisease_router = require("./router/PlantDisease_router");
 const user_router = require("./router/user_router");
+const admin_router= require("./router/admin_router")
 const paymentRoutes = require("./router/payment_router");
+const chatBot =require("./router/chatbotRouter")
+
 
 app.use(express.json());
 app.use(upload.single("image"));
 
 app.use("/api/predict", PlantDisease_router);
 app.use("/api/user", user_router);
+app.use("/api/admin",admin_router)
 app.use("/api/payment", paymentRoutes);
+app.use("/api/chat",chatBot)
 
 app.listen(process.env.PORT, () => {
   console.log("listnng.....");
