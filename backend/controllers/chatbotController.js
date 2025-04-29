@@ -1,6 +1,8 @@
 const axios = require("axios");
 
 const handleChat = async (req, res) => {
+  
+  console.log("UBJASBJCJSC")
   if (!req.is("application/json")) {
     return res.status(415).json({ error: "Request must be JSON" });
   }
@@ -34,6 +36,8 @@ const handleChat = async (req, res) => {
         },
       }
     );
+
+
 
 
     if (response.data.choices && response.data.choices.length > 0) {

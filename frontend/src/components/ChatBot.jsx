@@ -79,10 +79,11 @@ const ChatBot = ({ isDarkMode, setDarkMode }) => {
     setUserInput("");
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/chat", {
+      const response = await axios.post("http://localhost:8000/api/chat", {
         question: userInput,
       });
-
+     
+     
       const botMessage = response.data.answer || "No response from bot";
 
       // Speak the bot's message

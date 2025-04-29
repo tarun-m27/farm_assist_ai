@@ -20,7 +20,7 @@ const app = express();
 // Allow all origins (for development)
 app.use(cors());
 
-// If you want to allow only your frontend:
+//If you want to allow only your frontend:
 app.use(
   cors({
     origin: "*", // Change this to your frontend URL in production
@@ -29,7 +29,10 @@ app.use(
   })
 );
 
+
 const upload = multer({ storage: multer.memoryStorage() });
+app.use(express.json());
+app.use(upload.single("image"));
 
 const PlantDisease_router = require("./router/PlantDisease_router");
 const user_router = require("./router/user_router");
@@ -38,8 +41,7 @@ const paymentRoutes = require("./router/payment_router");
 const chatBot =require("./router/chatbotRouter")
 
 
-app.use(express.json());
-app.use(upload.single("image"));
+
 
 app.use("/api/predict", PlantDisease_router);
 app.use("/api/user", user_router);
