@@ -67,14 +67,15 @@ exports.predict = async (req, res) => {
         ...formData.getHeaders(), 
       },
     });
+    let res_data=response.data
 
-
+    if(res_data.detail && res_data.detail.length > 0) return res.status(200).json(res_data)
+    
     //uploading img to cloudinary
     const result = await uploadToCloudinary(req.file.buffer);
     
     
     //converting confidence to %
-    let res_data=response.data
     res_data.confidence = res_data.confidence*100
     res_data.confidence=Math.floor(res_data.confidence * 100) / 100;
     res_data.remaining_attempts=--attempts

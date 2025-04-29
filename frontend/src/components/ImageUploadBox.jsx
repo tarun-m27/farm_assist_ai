@@ -76,17 +76,30 @@ const Hero = ({ openAuthModal }) => {
       }
   
       const result = await response.json();
+   
+      if(result.detail && result.detail.length>0){
+        console.log("heyhvhasvd")
+        setAnalysisResult({
+          error: true,
+          isValid: true,
+          details: result.detail,
+        });
+      }
+      else{
 
-     
-      setAnalysisResult({
+        setAnalysisResult({
         isHealthy: result.prediction === "healthy",
         confidence: result.confidence,
         class_name:result.class_name,
-        details:result.genimi,
+        details:result.gemini,
         error: false
-      });
+         });
+        
+         setRemainingAttempts(result.remaining_attempts);
+        }
+
       
-      setRemainingAttempts(result.remaining_attempts);
+     
     
     
     } catch (error) {
