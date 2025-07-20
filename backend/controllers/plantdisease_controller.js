@@ -60,9 +60,9 @@ exports.predict = async (req, res) => {
     // check if attempts are 0, if so tell 
 
 
-
+    const modelurl = process.env.Model_Url || "http://127.0.0.1:8000/predict1/";
     // Send to remote server //https://sixthsem-mini-project-1.onrender.com
-    const response = await axios.post("http://127.0.0.1:8000/predict1/", formData, {
+    const response = await axios.post(modelurl, formData, {
       headers: {
         ...formData.getHeaders(), 
       },
