@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Assist AI - Complete Project Documentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #28a745;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            color: #28a745;
+            font-size: 2.5em;
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            color: #666;
+            margin: 10px 0;
+        }
+        
+        .toc {
+            background-color: #e9ecef;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .toc h2 {
+            color: #28a745;
+            margin-top: 0;
+        }
+        
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .toc li {
+            padding: 5px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .toc a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        
+        .section {
+            margin: 40px 0;
+            page-break-inside: avoid;
+        }
+        
+        .section h2 {
+            color: #28a745;
+            font-size: 1.8em;
+            border-bottom: 2px solid #28a745;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .section h3 {
+            color: #495057;
+            font-size: 1.4em;
+            margin: 20px 0 15px 0;
+        }
+        
+        .section h4 {
+            color: #6c757d;
+            font-size: 1.2em;
+            margin: 15px 0 10px 0;
+        }
+        
+        .code-block {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        
+        .diagram-container {
+            background-color: #f8f9fa;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .diagram-title {
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .feature-card h4 {
+            color: #28a745;
+            margin: 0 0 10px 0;
+        }
+        
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .tech-item {
+            background-color: #e9ecef;
+            padding: 10px 15px;
+            border-radius: 6px;
+            border-left: 4px solid #28a745;
+        }
+        
+        .api-endpoint {
+            background-color: #e7f3ff;
+            border: 1px solid #b3d9ff;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 5px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .info-box {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .success-box {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #28a745;
+            text-align: center;
+            color: #666;
+        }
+        
+        @media print {
+            body { background-color: white; }
+            .container { box-shadow: none; }
+            .section { page-break-inside: avoid; }
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        table th, table td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        table th {
+            background-color: #28a745;
+            color: white;
+            font-weight: bold;
+        }
+        
+        table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🌱 Farm Assist AI</h1>
+            <div class="subtitle">Complete Project Documentation & Technical Guide</div>
+            <div class="subtitle">AI-Powered Plant Disease Detection & Agricultural Advisory System</div>
+            <div style="margin-top: 20px; font-size: 0.9em; color: #888;">
+                Last Updated: October 2024 | Documentation Version: 1.0
+            </div>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h2>📋 Table of Contents</h2>
+            <ul>
+                <li><a href="#overview">1. Project Overview</a></li>
+                <li><a href="#architecture">2. System Architecture</a></li>
+                <li><a href="#technology">3. Technology Stack</a></li>
+                <li><a href="#models">4. AI Models and APIs</a></li>
+                <li><a href="#structure">5. Project Structure</a></li>
+                <li><a href="#flow">6. System Flow & Diagrams</a></li>
+                <li><a href="#endpoints">7. API Endpoints</a></li>
+                <li><a href="#database">8. Database Schema</a></li>
+                <li><a href="#installation">9. Installation & Setup</a></li>
+                <li><a href="#usage">10. Usage Guide</a></li>
+                <li><a href="#security">11. Security Features</a></li>
+                <li><a href="#payment">12. Payment Integration</a></li>
+                <li><a href="#deployment">13. Deployment</a></li>
+            </ul>
+        </div>
+
+        <!-- Project Overview -->
+        <div class="section" id="overview">
+            <h2>🌾 Project Overview</h2>
+            
+            <p><strong>Farm Assist AI</strong> is a comprehensive agricultural technology platform that leverages artificial intelligence to help farmers identify plant diseases, get treatment recommendations, and access agricultural advice through an intelligent chatbot. The system combines computer vision for disease detection with natural language processing for agricultural consultation.</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🔍 Disease Detection</h4>
+                    <p>AI-powered image analysis to identify 38 different plant diseases with 95% accuracy using CNN models</p>
+                </div>
+                <div class="feature-card">
+                    <h4>💊 Treatment Advice</h4>
+                    <p>AI-generated treatment recommendations using Google Gemini with organic and chemical options</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🤖 Smart Chatbot</h4>
+                    <p>GPT-3.5 powered agricultural chatbot providing expert farming advice in multiple languages</p>
+                </div>
+                <div class="feature-card">
+                    <h4>👥 User Management</h4>
+                    <p>Complete authentication system with API key management and usage tracking</p>
+                </div>
+                <div class="feature-card">
+                    <h4>💳 Payment System</h4>
+                    <p>Razorpay integration for premium features with flexible pricing plans</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📊 Admin Dashboard</h4>
+                    <p>Comprehensive administrative control panel with analytics and user management</p>
+                </div>
+            </div>
+
+            <div class="success-box">
+                <h4>🎯 Project Goals</h4>
+                <ul>
+                    <li>Assist farmers in early disease detection and prevention</li>
+                    <li>Provide actionable, AI-generated treatment recommendations</li>
+                    <li>Make agricultural expertise accessible to all farmers globally</li>
+                    <li>Track disease patterns and trends for better crop management</li>
+                    <li>Generate sustainable revenue through premium API services</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- System Architecture -->
+        <div class="section" id="architecture">
+            <h2>🏗️ System Architecture</h2>
+            
+            <div class="diagram-container">
+                <div class="diagram-title">High-Level System Architecture</div>
+                <div class="code-block">
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│                 │    │                 │    │                 │
+│   Frontend      │    │   Admin         │    │   Mobile/Web    │
+│   (React)       │◄───┤   Dashboard     │    │   Clients       │
+│                 │    │   (Next.js)     │    │                 │
+└─────────┬───────┘    └─────────────────┘    └─────────┬───────┘
+          │                                               │
+          │                                               │
+          └─────────────┐                   ┌─────────────┘
+                        │                   │
+                        ▼                   ▼
+                ┌─────────────────────────────────┐
+                │                                 │
+                │        Backend API              │
+                │       (Node.js + Express)       │
+                │                                 │
+                └─────────────┬───────────────────┘
+                              │
+                              ▼
+                ┌─────────────────────────────────┐
+                │                                 │
+                │       Database Layer            │
+                │       (MongoDB Atlas)           │
+                │                                 │
+                └─────────────┬───────────────────┘
+                              │
+          ┌───────────────────┼───────────────────┐
+          │                   │                   │
+          ▼                   ▼                   ▼
+┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
+│                 │ │                 │ │                 │
+│   ML Model      │ │   Google        │ │   External      │
+│   Service       │ │   Gemini AI     │ │   Services      │
+│   (FastAPI)     │ │                 │ │   (Cloudinary)  │
+│                 │ │                 │ │                 │
+└─────────────────┘ └─────────────────┘ └─────────────────┘
+                </div>
+            </div>
+
+            <h3>Component Architecture</h3>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Frontend Layer</h4>
+                    <ul style="text-align: left; margin: 10px 0;">
+                        <li>React Application - Main user interface</li>
+                        <li>Next.js Admin Dashboard - Administrative interface</li>
+                        <li>Responsive Design - Mobile-first approach</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>Backend Layer</h4>
+                    <ul style="text-align: left; margin: 10px 0;">
+                        <li>Express.js Server - RESTful API server</li>
+                        <li>Middleware Stack - CORS, Auth, File Upload</li>
+                        <li>Route Handlers - Modular routing system</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>AI/ML Layer</h4>
+                    <ul style="text-align: left; margin: 10px 0;">
+                        <li>FastAPI Model Service - Isolated ML serving</li>
+                        <li>Google Gemini - Treatment recommendations</li>
+                        <li>OpenRouter GPT-3.5 - Chatbot functionality</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>Data Layer</h4>
+                    <ul style="text-align: left; margin: 10px 0;">
+                        <li>MongoDB Atlas - Primary database</li>
+                        <li>Cloudinary - Image storage & management</li>
+                        <li>Redis (optional) - Caching layer</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="section" id="technology">
+            <h2>💻 Technology Stack</h2>
+            
+            <h3>Frontend Technologies</h3>
+            <div class="tech-stack">
+                <div class="tech-item"><strong>React 18</strong> - Component-based UI framework</div>
+                <div class="tech-item"><strong>Next.js 15</strong> - Full-stack React framework for admin</div>
+                <div class="tech-item"><strong>TypeScript</strong> - Type-safe JavaScript</div>
+                <div class="tech-item"><strong>Tailwind CSS</strong> - Utility-first CSS framework</div>
+                <div class="tech-item"><strong>Radix UI</strong> - Accessible component library</div>
+                <div class="tech-item"><strong>React Hot Toast</strong> - Notification system</div>
+            </div>
+
+            <h3>Backend Technologies</h3>
+            <div class="tech-stack">
+                <div class="tech-item"><strong>Node.js</strong> - JavaScript runtime environment</div>
+                <div class="tech-item"><strong>Express.js 4.21</strong> - Web application framework</div>
+                <div class="tech-item"><strong>MongoDB 8.12</strong> - NoSQL database</div>
+                <div class="tech-item"><strong>Mongoose</strong> - MongoDB object modeling</div>
+                <div class="tech-item"><strong>JWT</strong> - JSON Web Tokens for authentication</div>
+                <div class="tech-item"><strong>bcryptjs</strong> - Password hashing</div>
+                <div class="tech-item"><strong>Multer</strong> - File upload handling</div>
+                <div class="tech-item"><strong>CORS</strong> - Cross-origin resource sharing</div>
+            </div>
+
+            <h3>AI/ML Technologies</h3>
+            <div class="tech-stack">
+                <div class="tech-item"><strong>FastAPI</strong> - High-performance ML API framework</div>
+                <div class="tech-item"><strong>Python</strong> - Programming language for ML</div>
+                <div class="tech-item"><strong>TensorFlow/Keras</strong> - Deep learning framework</div>
+                <div class="tech-item"><strong>MobileNet</strong> - Lightweight CNN architecture</div>
+                <div class="tech-item"><strong>PIL (Pillow)</strong> - Python imaging library</div>
+                <div class="tech-item"><strong>NumPy</strong> - Numerical computing</div>
+            </div>
+
+            <h3>External Services</h3>
+            <div class="tech-stack">
+                <div class="tech-item"><strong>Google Gemini 1.5 Pro</strong> - Advanced language model</div>
+                <div class="tech-item"><strong>OpenRouter GPT-3.5 Turbo</strong> - Conversational AI</div>
+                <div class="tech-item"><strong>Cloudinary</strong> - Cloud-based image management</div>
+                <div class="tech-item"><strong>Razorpay</strong> - Payment processing</div>
+                <div class="tech-item"><strong>MongoDB Atlas</strong> - Cloud database</div>
+            </div>
+        </div>
+
+        <!-- AI Models and APIs -->
+        <div class="section" id="models">
+            <h2>🤖 AI Models and APIs</h2>
+            
+            <h3>1. Plant Disease Detection Model</h3>
+            <div class="info-box">
+                <table>
+                    <tr><th>Property</th><th>Details</th></tr>
+                    <tr><td>Type</td><td>Convolutional Neural Network (CNN)</td></tr>
+                    <tr><td>Architecture</td><td>MobileNetV2 (Transfer Learning)</td></tr>
+                    <tr><td>Framework</td><td>TensorFlow/Keras</td></tr>
+                    <tr><td>Input</td><td>224x224 RGB images</td></tr>
+                    <tr><td>Output</td><td>38 different plant disease classes</td></tr>
+                    <tr><td>Accuracy</td><td>~95% (varies by disease type)</td></tr>
+                    <tr><td>Model File</td><td>plant_disease_prediction_model_mobilenet.pkl</td></tr>
+                </table>
+            </div>
+
+            <h4>Supported Plant Diseases (38 Classes)</h4>
+            <div class="code-block">
+Apple: Scab, Black Rot, Cedar Apple Rust, Healthy
+Blueberry: Healthy
+Cherry: Powdery Mildew, Healthy
+Corn: Cercospora Leaf Spot, Common Rust, Northern Leaf Blight, Healthy
+Grape: Black Rot, Esca, Leaf Blight, Healthy
+Orange: Huanglongbing (Citrus Greening)
+Peach: Bacterial Spot, Healthy
+Pepper: Bacterial Spot, Healthy
+Potato: Early Blight, Late Blight, Healthy
+Raspberry: Healthy
+Soybean: Healthy
+Squash: Powdery Mildew
+Strawberry: Leaf Scorch, Healthy
+Tomato: Bacterial Spot, Early Blight, Late Blight, Leaf Mold, 
+        Septoria Leaf Spot, Spider Mites, Target Spot, 
+        Yellow Leaf Curl Virus, Mosaic Virus, Healthy
+            </div>
+
+            <h3>2. Google Gemini 1.5 Pro API</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Purpose</h4>
+                    <p>Generate treatment recommendations for identified plant diseases</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Input</h4>
+                    <p>Disease classification results from CNN model</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Output</h4>
+                    <p>Concise treatment advice (max 70 words)</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Features</h4>
+                    <p>Organic treatments, chemical alternatives, preventive measures</p>
+                </div>
+            </div>
+
+            <h3>3. OpenRouter GPT-3.5 Turbo</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Purpose</h4>
+                    <p>Agricultural chatbot functionality</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Model</h4>
+                    <p>gpt-3.5-turbo</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Languages</h4>
+                    <p>English and Kannada</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Expertise</h4>
+                    <p>Agriculture and farming specialization</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Structure -->
+        <div class="section" id="structure">
+            <h2>📁 Project Structure</h2>
+            
+            <div class="code-block">
+farm_assist_ai/
+├── backend/                    # Node.js Backend
+│   ├── controllers/           # Route handlers
+│   │   ├── admin_controller.js
+│   │   ├── chatbotController.js
+│   │   ├── paymentController.js
+│   │   ├── plantdisease_controller.js
+│   │   └── user_controller.js
+│   ├── models/               # Database schemas
+│   │   ├── RequestTracking.js
+│   │   └── user_model.js
+│   ├── router/               # Route definitions
+│   │   ├── admin_router.js
+│   │   ├── chatbotRouter.js
+│   │   ├── payment_router.js
+│   │   ├── PlantDisease_router.js
+│   │   └── user_router.js
+│   ├── utils/                # Utility functions
+│   ├── conf.env             # Environment configuration
+│   ├── server.js            # Main server file
+│   └── package.json         # Dependencies
+│
+├── Model/                     # ML Model Service
+│   ├── app.py              # FastAPI application
+│   ├── class_indices.json  # Disease class mappings
+│   └── plant_disease_prediction_model_mobilenet.pkl
+│
+├── Admin_dashboard/          # Next.js Admin Interface
+│   ├── app/                # App router structure
+│   │   ├── layout.tsx     # Root layout
+│   │   └── page.tsx       # Login page
+│   ├── components/         # Reusable components
+│   └── package.json       # Dependencies
+│
+├── frontend/                 # React User Interface
+│   └── README.md
+│
+└── .gitignore
+            </div>
+        </div>
+
+        <!-- System Flow & Diagrams -->
+        <div class="section" id="flow">
+            <h2>🔄 System Flow & Visual Diagrams</h2>
+            
+            <h3>Plant Disease Detection Flow</h3>
+            <div class="diagram-container">
+                <div class="diagram-title">Data Flow Diagram - Disease Detection Process</div>
+                <div class="code-block">
+START → USER UPLOADS PLANT IMAGE
+   ↓
+FRONTEND VALIDATION → BACKEND API AUTHENTICATION
+   ↓
+CHECK USER ATTEMPTS → FORWARD TO ML SERVICE
+   ↓
+┌─────────────────────────────────────────┐
+│           ML SERVICE PROCESSING          │
+│                                         │
+│ IMAGE → VALIDATE → PREPROCESS →         │
+│ RECEIVED  AS PLANT    IMAGE             │
+│    ↓         ↓         ↓               │
+│ RUN CNN → CALCULATE → RETURN            │
+│ PREDICTION CONFIDENCE  RESULTS          │
+└─────────────────┬───────────────────────┘
+                  ↓
+        BACKEND API PROCESSING
+                  ↓
+┌─────────────────────────────────────────┐
+│         PARALLEL PROCESSING              │
+│                                         │
+│ GEMINI    CLOUDINARY    DATABASE        │
+│ TREATMENT    IMAGE       UPDATE         │
+│ ADVICE      STORAGE      HISTORY        │
+└─────────────────┬───────────────────────┘
+                  ↓
+    CONSOLIDATE RESPONSE → SEND TO FRONTEND
+                  ↓
+           DISPLAY RESULTS → END
+                </div>
+            </div>
+
+            <h3>User Journey Flowchart</h3>
+            <div class="diagram-container">
+                <div class="diagram-title">Complete User Experience Flow</div>
+                <div class="code-block">
+                    START
+                      ↓
+                   VISITOR
+                      ↓
+                  NEW USER?
+                 /         \
+               YES          NO
+                ↓            ↓
+            SIGN UP      SIGN IN
+                \          /
+                 \        /
+                  ↓      ↓
+                  DASHBOARD
+                      ↓
+          ┌───────────┬───────────┐
+          ↓           ↓           ↓
+      DISEASE     CHATBOT     ACCOUNT
+      DETECTION              MANAGEMENT
+          ↓           ↓           ↓
+      UPLOAD      ASK         VIEW API
+      IMAGE       QUESTION    USAGE
+          ↓           ↓           ↓
+      ATTEMPTS    GET         PURCHASE
+      REMAINING?  ANSWER      PLAN
+          ↓           ↓           ↓
+      YES/NO      END         PAYMENT
+          ↓                       ↓
+      PREDICTION              SUCCESS?
+          ↓                       ↓
+      DISPLAY                 ACTIVATE
+      RESULTS                 PLAN
+          ↓                       ↓
+      SAVE TO                 END
+      HISTORY
+          ↓
+        END
+                </div>
+            </div>
+
+            <h3>Database Entity Relationship</h3>
+            <div class="diagram-container">
+                <div class="diagram-title">Database Schema Relationships</div>
+                <div class="code-block">
+┌─────────────────────────────────────────┐
+│                 USERS                   │
+├─────────────────────────────────────────┤
+│ _id: ObjectId (PRIMARY KEY)             │
+│ name: String                            │
+│ email: String (UNIQUE)                  │
+│ password: String (HASHED)               │
+│ api_key: String                         │
+│ apiKeyActive: Boolean                   │
+│ apiUsageCount: Number                   │
+│ totalRemaining: Number                  │
+│ lastRequestAt: Date                     │
+│ role: String (enum)                     │
+│ createdAt: Date                         │
+│ lastRequests: [RequestSchema] (EMBEDDED)│
+│ payments: [PaymentSchema] (EMBEDDED)    │
+└─────────────────┬───────────────────────┘
+                  │
+                  │ 1:N (EMBEDDED)
+                  ▼
+┌─────────────────────────────────────────┐
+│               REQUESTS                  │
+├─────────────────────────────────────────┤
+│ imageUrl: String                        │
+│ fileName: String                        │
+│ date: Date                              │
+│ result: String                          │
+│ confidence: Number                      │
+└─────────────────────────────────────────┘
+
+┌─────────────────────────────────────────┐
+│               PAYMENTS                  │
+├─────────────────────────────────────────┤
+│ paymentId: String                       │
+│ plan: String                            │
+│ amount: Number                          │
+│ date: Date                              │
+│ status: String                          │
+└─────────────────────────────────────────┘
+                </div>
+            </div>
+        </div>
+
+        <!-- API Endpoints -->
+        <div class="section" id="endpoints">
+            <h2>🔗 API Endpoints</h2>
+            
+            <h3>Authentication Endpoints</h3>
+            <div class="api-endpoint">POST /api/user/signup - User registration</div>
+            <div class="api-endpoint">POST /api/user/login - User authentication</div>
+            <div class="api-endpoint">GET /api/user/dashboard - User dashboard data</div>
+
+            <h3>Plant Disease Detection</h3>
+            <div class="api-endpoint">POST /api/predict/ - Web interface prediction</div>
+            <div class="api-endpoint">POST /api/predict/api-key - API access prediction</div>
+
+            <h3>Chatbot</h3>
+            <div class="api-endpoint">POST /api/chat/ - Agricultural chatbot queries</div>
+
+            <h3>Payment System</h3>
+            <div class="api-endpoint">POST /api/payment/create-order - Create payment order</div>
+            <div class="api-endpoint">POST /api/payment/verify - Verify payment completion</div>
+
+            <h3>Admin Endpoints</h3>
+            <div class="api-endpoint">POST /api/admin/login - Admin authentication</div>
+            <div class="api-endpoint">GET /api/admin/dashboard - Admin dashboard</div>
+            <div class="api-endpoint">GET /api/admin/users - User management</div>
+            <div class="api-endpoint">GET /api/admin/analytics - System analytics</div>
+
+            <h3>ML Model Service</h3>
+            <div class="api-endpoint">GET / - Health check</div>
+            <div class="api-endpoint">POST /predict1 - Disease prediction</div>
+        </div>
+
+        <!-- Database Schema -->
+        <div class="section" id="database">
+            <h2>🗄️ Database Schema</h2>
+            
+            <h3>User Schema</h3>
+            <div class="code-block">
+{
+  _id: ObjectId,
+  name: String,
+  email: String (unique),
+  password: String (hashed with bcryptjs),
+  api_key: String,
+  apiKeyActive: Boolean,
+  apiUsageCount: Number,
+  totalRemaining: Number (default: 5),
+  lastRequestAt: Date,
+  role: String (enum: ["user", "admin"]),
+  createdAt: Date,
+  lastRequests: [RequestSchema], // Last 5 requests
+  payments: [PaymentSchema]
+}
+            </div>
+
+            <h3>Request Schema (Embedded)</h3>
+            <div class="code-block">
+{
+  imageUrl: String,    // Cloudinary URL
+  fileName: String,
+  date: Date,
+  result: String,      // Disease classification
+  confidence: Number   // Prediction confidence
+}
+            </div>
+
+            <h3>Payment Schema (Embedded)</h3>
+            <div class="code-block">
+{
+  paymentId: String,   // Razorpay payment ID
+  plan: String,        // "pro", "premium", etc.
+  amount: Number,      // Payment amount
+  date: Date,          // Payment date
+  status: String       // Payment status
+}
+            </div>
+        </div>
+
+        <!-- Installation & Setup -->
+        <div class="section" id="installation">
+            <h2>⚙️ Installation & Setup</h2>
+            
+            <h3>Prerequisites</h3>
+            <div class="warning-box">
+                <ul>
+                    <li>Node.js 16+ and npm</li>
+                    <li>Python 3.8+ and pip</li>
+                    <li>MongoDB Atlas account</li>
+                    <li>Google Cloud Platform account (Gemini API)</li>
+                    <li>OpenRouter account</li>
+                    <li>Razorpay account</li>
+                    <li>Cloudinary account</li>
+                </ul>
+            </div>
+
+            <h3>Backend Setup</h3>
+            <div class="code-block">
+# Navigate to backend directory
+cd backend
+
+# Install dependencies
+npm install
+
+# Create environment file (conf.env)
+DATABASE_URI=mongodb+srv://your_connection_string
+PORT=8000
+OPENROUTER_API_KEY=your_openrouter_key
+JWT_SECRET=your_jwt_secret
+API_KEY_SECRET=your_api_secret
+RAZORPAY_KEY_ID=your_razorpay_key_id
+RAZORPAY_KEY_SECRET=your_razorpay_secret
+CLOUD_NAME=your_cloudinary_name
+CLOUDINARY_API_KEY=your_cloudinary_key
+CLOUDINARY_API_SECRET=your_cloudinary_secret
+
+# Start the server
+npm start
+            </div>
+
+            <h3>ML Model Setup</h3>
+            <div class="code-block">
+# Navigate to Model directory
+cd Model
+
+# Install Python dependencies
+pip install fastapi uvicorn pillow numpy google-generativeai
+
+# Update app.py with your Gemini API key
+# Line 28: genai.configure(api_key="YOUR_GEMINI_API_KEY")
+
+# Start the FastAPI server
+python app.py
+            </div>
+
+            <h3>Admin Dashboard Setup</h3>
+            <div class="code-block">
+# Navigate to Admin_dashboard directory
+cd Admin_dashboard
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+            </div>
+
+            <h3>Frontend Setup</h3>
+            <div class="code-block">
+# Navigate to frontend directory
+cd frontend
+
+# Install dependencies
+npm install
+
+# Start the application
+npm start
+            </div>
+        </div>
+
+        <!-- Usage Guide -->
+        <div class="section" id="usage">
+            <h2>📖 Usage Guide</h2>
+            
+            <h3>For Farmers (Web Interface)</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>1. Registration</h4>
+                    <p>Create account with name, email, and password</p>
+                </div>
+                <div class="feature-card">
+                    <h4>2. Disease Detection</h4>
+                    <p>Upload clear plant leaf images for instant disease identification</p>
+                </div>
+                <div class="feature-card">
+                    <h4>3. Get Recommendations</h4>
+                    <p>Receive AI-generated treatment advice with confidence scores</p>
+                </div>
+                <div class="feature-card">
+                    <h4>4. Chatbot Consultation</h4>
+                    <p>Ask farming questions in English or Kannada</p>
+                </div>
+                <div class="feature-card">
+                    <h4>5. Premium Upgrade</h4>
+                    <p>Purchase additional API calls and access API keys</p>
+                </div>
+                <div class="feature-card">
+                    <h4>6. History Tracking</h4>
+                    <p>View last 5 disease detection requests and results</p>
+                </div>
+            </div>
+
+            <h3>For Developers (API Access)</h3>
+            <div class="info-box">
+                <h4>API Usage Example</h4>
+                <div class="code-block">
+# Get API Key: Upgrade to premium plan through web interface
+# Authentication: Include API key in Authorization header
+
+curl -X POST \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -F "image=@plant_leaf.jpg" \
+  http://localhost:8000/api/predict/api-key
+
+# Response:
+{
+  "filename": "plant_leaf.jpg",
+  "prediction": "diseased",
+  "confidence": 0.9234,
+  "class_name": "Tomato Early Blight",
+  "class_index": 29,
+  "gemini": "Apply copper-based fungicide. Remove affected leaves...",
+  "rot_percentage": 15.67,
+  "care_advice": "Apply pesticides to treat the infection.",
+  "remaining_attempts": 49
+}
+                </div>
+            </div>
+
+            <h3>For Administrators</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Dashboard Access</h4>
+                    <p>Login with admin credentials to access control panel</p>
+                </div>
+                <div class="feature-card">
+                    <h4>User Management</h4>
+                    <p>View, manage, and monitor user accounts and activities</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Analytics</h4>
+                    <p>Monitor API usage, request patterns, and system health</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Revenue Tracking</h4>
+                    <p>Track payments, subscription plans, and revenue metrics</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Features -->
+        <div class="section" id="security">
+            <h2>🔒 Security Features</h2>
+            
+            <h3>Authentication & Authorization</h3>
+            <div class="tech-stack">
+                <div class="tech-item"><strong>JWT Tokens</strong> - Secure user sessions with expiration</div>
+                <div class="tech-item"><strong>bcryptjs</strong> - Password hashing with salt rounds</div>
+                <div class="tech-item"><strong>API Key Validation</strong> - Secure API access control</div>
+                <div class="tech-item"><strong>Role-based Access</strong> - Admin/user permission system</div>
+            </div>
+
+            <h3>Data Protection</h3>
+            <div class="tech-stack">
+                <div class="tech-item"><strong>Input Validation</strong> - Sanitize all user inputs</div>
+                <div class="tech-item"><strong>File Type Validation</strong> - Accept only image files</div>
+                <div class="tech-item"><strong>Rate Limiting</strong> - Prevent API abuse and DoS attacks</div>
+                <div class="tech-item"><strong>CORS Configuration</strong> - Control cross-origin requests</div>
+            </div>
+
+            <h3>Environment Security</h3>
+            <div class="tech-stack">
+                <div class="tech-item"><strong>Environment Variables</strong> - Secure API key storage</div>
+                <div class="tech-item"><strong>Database Security</strong> - MongoDB Atlas encryption</div>
+                <div class="tech-item"><strong>HTTPS</strong> - Secure data transmission</div>
+                <div class="tech-item"><strong>Cloud Security</strong> - Cloudinary secure URLs</div>
+            </div>
+        </div>
+
+        <!-- Payment Integration -->
+        <div class="section" id="payment">
+            <h2>💳 Payment Integration</h2>
+            
+            <h3>Razorpay Integration Features</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>Order Creation</h4>
+                    <p>Generate secure payment orders with proper validation</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Payment Verification</h4>
+                    <p>Validate payment status and amount verification</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Webhook Support</h4>
+                    <p>Real-time payment updates and notifications</p>
+                </div>
+                <div class="feature-card">
+                    <h4>Multiple Plans</h4>
+                    <p>Flexible pricing options for different user needs</p>
+                </div>
+            </div>
+
+            <h3>Pricing Model</h3>
+            <table>
+                <tr><th>Plan</th><th>Features</th><th>Price</th></tr>
+                <tr><td>Free Tier</td><td>5 free predictions, Basic chatbot access</td><td>₹0</td></tr>
+                <tr><td>Pro Plan</td><td>50 additional predictions, API access, Priority support</td><td>₹99</td></tr>
+                <tr><td>Enterprise</td><td>Unlimited predictions, Dedicated API key, Custom integrations</td><td>Contact</td></tr>
+            </table>
+        </div>
+
+        <!-- Deployment -->
+        <div class="section" id="deployment">
+            <h2>🚀 Deployment</h2>
+            
+            <h3>Recommended Deployment Options</h3>
+            <table>
+                <tr><th>Component</th><th>Platform</th><th>Reason</th></tr>
+                <tr><td>Backend API</td><td>Heroku, AWS, DigitalOcean</td><td>Node.js support, easy scaling</td></tr>
+                <tr><td>ML Model Service</td><td>Render, Railway, Google Cloud Run</td><td>Python/FastAPI support</td></tr>
+                <tr><td>Frontend</td><td>Vercel, Netlify</td><td>React optimization, CDN</td></tr>
+                <tr><td>Admin Dashboard</td><td>Vercel, Netlify</td><td>Next.js optimization</td></tr>
+                <tr><td>Database</td><td>MongoDB Atlas</td><td>Managed cloud database</td></tr>
+                <tr><td>File Storage</td><td>Cloudinary</td><td>Image optimization, CDN</td></tr>
+            </table>
+
+            <h3>Production Environment Variables</h3>
+            <div class="code-block">
+NODE_ENV=production
+DATABASE_URI=mongodb+srv://production_connection_string
+Model_Url=https://your-ml-service.com/predict1/
+FRONTEND_URL=https://your-frontend-domain.com
+ADMIN_URL=https://your-admin-dashboard.com
+            </div>
+
+            <h3>Performance Optimization</h3>
+            <div class="success-box">
+                <ul>
+                    <li><strong>Image Compression:</strong> Optimize image uploads before processing</li>
+                    <li><strong>Caching:</strong> Implement Redis for frequently accessed data</li>
+                    <li><strong>CDN:</strong> Use Cloudinary's global CDN for images</li>
+                    <li><strong>Load Balancing:</strong> Scale horizontally for high traffic</li>
+                    <li><strong>Database Indexing:</strong> Optimize MongoDB queries</li>
+                    <li><strong>API Rate Limiting:</strong> Implement sophisticated rate limiting</li>
+                </ul>
+            </div>
+
+            <h3>Future Enhancements</h3>
+            <div class="info-box">
+                <h4>Planned Features</h4>
+                <ul>
+                    <li>Mobile app development with React Native</li>
+                    <li>Offline mode for local model inference</li>
+                    <li>Weather integration for enhanced recommendations</li>
+                    <li>Complete crop management system</li>
+                    <li>Farmer community features and forums</li>
+                    <li>IoT sensor data incorporation</li>
+                    <li>Multi-language support expansion</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <h3>📞 Contact Information</h3>
+            <p>For technical support or inquiries about the Farm Assist AI project, please contact the development team.</p>
+            <p><strong>License:</strong> This project is proprietary software. All rights reserved.</p>
+            <hr style="margin: 20px 0;">
+            <p><em>Farm Assist AI - Empowering farmers with artificial intelligence</em></p>
+            <p><strong>Last Updated:</strong> October 2024 | <strong>Documentation Version:</strong> 1.0</p>
+        </div>
+    </div>
+</body>
+</html>
